@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Moving Image</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #image {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+
+        background-image: url("images.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        max-width: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img id="image" src="12-august.webp" />
+    </div>
+    <script>
+      var x = 0;
+      var y = 0;
+      var xDirection = 1;
+
+      var yDirection = 1;
+
+      var xSpeed = 1;
+
+      var ySpeed = 1;
+
+      var image = document.getElementById("image");
+
+      function moveImage() {
+        x += xDirection * xSpeed;
+        y += yDirection * ySpeed;
+        image.style.left = x + "px";
+        image.style.top = y + "px";
+        if (x > window.innerWidth - 100) {
+          xDirection = -1;
+        }
+        if (y > window.innerHeight - 100) {
+          yDirection = -1;
+        }
+        if (x < 0) {
+          xDirection = 1;
+        }
+        if (y < 0) {
+          yDirection = 1;
+        }
+      }
+      setInterval(moveImage, 10);
+    </script>
+  </body>
+</html>
